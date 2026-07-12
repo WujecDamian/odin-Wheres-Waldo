@@ -4,17 +4,11 @@ import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
 import "./App.css";
 import "../../node_modules/modern-normalize/modern-normalize.css";
+import router from "./Routes";
+import { RouterProvider } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <>
-      <main>
-        <h1>Hi there</h1>
-      </main>
-    </>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
