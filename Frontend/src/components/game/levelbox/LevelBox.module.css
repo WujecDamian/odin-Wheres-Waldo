@@ -1,0 +1,19 @@
+.level__box {
+  width: 450px;
+  a {
+    color: rgb(28, 169, 0);
+    text-decoration: none;
+  }
+}
+
+.level__box__img {
+  width: 100%;
+  height: auto;
+}
+
+.level__box__title {
+  color: rgb(35, 39, 6);
+}
+
+.level__box__difficulty {
+}

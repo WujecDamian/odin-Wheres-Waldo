@@ -1,0 +1,9 @@
+.levels {
+  width: 100%;
+  display: grid;
+  margin-top: 1rem;
+  grid-template-columns: repeat(auto-fit, 450px);
+  gap: 3rem;
+  place-content: center;
+  align-items: center;
+}
