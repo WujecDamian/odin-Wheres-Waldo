@@ -50,6 +50,7 @@ footer {
 }
 main {
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
   margin: 2rem;
   padding: 1rem;

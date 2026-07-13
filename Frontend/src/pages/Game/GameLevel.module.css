@@ -1,0 +1,15 @@
+.small__screen__notice {
+  display: none;
+  margin: 0.75rem;
+  color: var(--color-red);
+  font-weight: 100;
+  font-size: 1.2rem;
+  font-style: italic;
+  text-align: end;
+}
+
+@media (max-width: 1380px) {
+  .small__screen__notice {
+    display: block;
+  }
+}

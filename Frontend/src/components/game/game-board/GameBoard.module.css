@@ -1,0 +1,15 @@
+.game__board {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  filter: drop-shadow(0px 0px 15px var(--color-yellow));
+  border: 1rem double var(--color-yellow);
+  border-radius: 3rem;
+  corner-shape: superellipse(0);
+}
+
+.board__image {
+  display: block;
+  width: 100%;
+  min-width: 1280px;
+  min-height: 720px;
+}
