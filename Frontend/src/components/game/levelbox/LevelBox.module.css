@@ -18,7 +18,9 @@
 
 .level__box__title {
   color: rgb(35, 39, 6);
+  text-indent: 1rem;
 }
 
 .level__box__difficulty {
+  text-indent: 1rem;
 }
