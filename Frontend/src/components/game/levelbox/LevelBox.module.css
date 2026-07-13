@@ -11,7 +11,7 @@
   height: auto;
   corner-top-shape: superellipse(0);
   corner-bottom-shape: superellipse(-10);
-  border: 0.42rem double var(--color-red);
+  border: 0.6rem double var(--color-red);
   filter: drop-shadow(0px 10px 10px rgba(255, 0, 0, 0.2));
   border-radius: 2rem 2rem 1rem 1rem;
 }
