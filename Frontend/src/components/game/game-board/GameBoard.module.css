@@ -5,6 +5,7 @@
   border: 1rem double var(--color-yellow);
   border-radius: 3rem;
   corner-shape: superellipse(0);
+  cursor: pointer;
 }
 
 .board__image {
