@@ -42,8 +42,8 @@ const GameBoard = (props) => {
     setClientX(Math.round(x));
     setClientY(Math.round(y));
 
-    const clientRefX = (clientX / refX) * 100;
-    const clientRefY = (clientY / refY) * 100;
+    const clientRefX = Math.round((x / refX) * 100 * 100) / 100;
+    const clientRefY = Math.round((y / refY) * 100 * 100) / 100;
     setPercentageX(clientRefX);
     setPercentageY(clientRefY);
   };
@@ -60,7 +60,7 @@ const GameBoard = (props) => {
           ref={refElement}
         />
       </section>
-      <p className="debug">
+      <p className={styles.debug}>
         Image X: {clientX} | Image Y: {clientY}
         <br></br>
         Image Width: {refX} | Image Height: {refY}
