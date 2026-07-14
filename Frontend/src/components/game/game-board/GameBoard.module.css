@@ -14,3 +14,12 @@
   min-width: 1280px;
   min-height: 720px;
 }
+
+.debug {
+  border: 0.3rem double var(--color-orange);
+  width: 20vw;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 1rem;
+  corner-shape: superellipse(0);
+}
