@@ -4,5 +4,16 @@ const getAllLevels = async (req, res) => {
   const allLevels = await prisma.level.findMany();
   res.json({ allLevels });
 };
+const getLevel = async (req, res) => {
+  const levelId = req.params["gameLevel"];
+  console.log(levelId);
+  const level = await prisma.level.findUnique({
+    where: { id: Number(levelId) },
+    include: {
+      characters: true,
+    },
+  });
+  res.json({ level });
+};
 
-export { getAllLevels };
+export { getAllLevels, getLevel };

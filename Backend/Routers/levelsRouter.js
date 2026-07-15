@@ -6,8 +6,6 @@ const router = express.Router();
 import * as levelsController from "../Controllers/levelsController.js";
 
 router.get("/getAllLevels", levelsController.getAllLevels);
-router.get("/about", (req, res) => {
-  res.send("About birds");
-});
+router.get("/getLevel/:gameLevel", levelsController.getLevel);
 
 export default router;
