@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import styles from "./GameBoard.module.css";
 import ClickModalList from "./clickModal/ClickModalList";
 
-const GameBoard = ({ gameObj, characterList }) => {
+const GameBoard = ({ levelObj }) => {
   const [clientX, setClientX] = useState(0);
   const [clientY, setClientY] = useState(0);
   const refElement = useRef(null);
@@ -69,7 +69,7 @@ const GameBoard = ({ gameObj, characterList }) => {
     <>
       <section className={styles.game__board}>
         <img
-          src={gameObj.img_src}
+          src={levelObj.img_url}
           alt=""
           className={styles.board__image}
           draggable="false"
@@ -81,7 +81,7 @@ const GameBoard = ({ gameObj, characterList }) => {
           <ClickModalList
             box={box}
             closeBox={closeBox}
-            characterList={characterList}
+            characterList={levelObj.characters}
           ></ClickModalList>
         )}
       </section>

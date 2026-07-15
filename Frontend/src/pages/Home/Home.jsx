@@ -14,7 +14,6 @@ function Home() {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const result = await response.json();
-
         setLevels(result.allLevels);
       } catch (err) {
         console.error("Fetch failed", err);
