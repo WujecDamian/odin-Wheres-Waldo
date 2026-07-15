@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import styles from "./GameBoard.module.css";
+import ClickModalList from "./clickModal/ClickModalList";
 
-const GameBoard = (props) => {
+const GameBoard = ({ gameObj, characterList }) => {
   const [clientX, setClientX] = useState(0);
   const [clientY, setClientY] = useState(0);
   const refElement = useRef(null);
@@ -11,7 +12,9 @@ const GameBoard = (props) => {
   const [imgY, setImgY] = useState(0);
   const [percentageX, setPercentageX] = useState(0);
   const [percentageY, setPercentageY] = useState(0);
+  const [box, setBox] = useState({ isOpen: false, x: 0, y: 0 });
 
+  // Get Image width and height
   useEffect(() => {
     const width = refElement.current.offsetWidth;
     const height = refElement.current.offsetHeight;
@@ -20,6 +23,7 @@ const GameBoard = (props) => {
     setImgY(height);
   }, []);
 
+  // Set current image width and height if those values changed (window resized)
   useEffect(() => {
     setRefX(imgX);
     setRefY(imgY);
@@ -33,6 +37,7 @@ const GameBoard = (props) => {
   };
   handleResize();
 
+  // Getting X, Y where mouse is and % values also
   const mouseMoveHandler = (e) => {
     // .getBoundingClientRect() helps track coordinates relative to the board itself
     const rect = e.currentTarget.getBoundingClientRect();
@@ -48,17 +53,37 @@ const GameBoard = (props) => {
     setPercentageY(clientRefY);
   };
 
+  // Modal / Box on click containing list of characters to pick from
+  const handleAreaClick = (e) => {
+    setBox({
+      isOpen: true,
+      x: clientX,
+      y: clientY,
+    });
+  };
+  const closeBox = (e) => {
+    event.stopPropagation();
+    setBox({ isOpen: false, x: 0, y: 0 });
+  };
   return (
     <>
       <section className={styles.game__board}>
         <img
-          src={props.imgSrc}
+          src={gameObj.img_src}
           alt=""
           className={styles.board__image}
           draggable="false"
           onMouseMove={mouseMoveHandler}
+          onClick={handleAreaClick}
           ref={refElement}
         />
+        {box.isOpen && (
+          <ClickModalList
+            box={box}
+            closeBox={closeBox}
+            characterList={characterList}
+          ></ClickModalList>
+        )}
       </section>
       <p className={styles.debug}>
         Image X: {clientX} | Image Y: {clientY}

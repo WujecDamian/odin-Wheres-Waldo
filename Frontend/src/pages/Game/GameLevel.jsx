@@ -24,7 +24,7 @@ const GameLevel = (props) => {
       level_id: 2,
       character_name: "Wilma",
       img_url:
-        "https://static.wikia.nocookie.net/waldo/images/f/fe/Character_-_Wenda.png/revision/latest/smart/width/386/height/259?cb=20251124164901",
+        "https://static.wikia.nocookie.net/waldo/images/4/46/Wilma.JPG/revision/latest?cb=20060419212311",
       x1: 76.5,
       x2: 77.8,
       y1: 39.5,
