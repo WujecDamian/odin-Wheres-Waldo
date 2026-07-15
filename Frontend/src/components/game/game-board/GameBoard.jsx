@@ -15,14 +15,12 @@ const GameBoard = ({ levelObj }) => {
   const [box, setBox] = useState({ isOpen: false, x: 0, y: 0 });
 
   // Get Image width and height
-  useEffect(() => {
+  const handleImageLoad = () => {
     const width = refElement.current.offsetWidth;
-    const height = refElement.current.offsetHeight;
-
+    const height = refElement.current.clientHeight;
     setImgX(width);
     setImgY(height);
-  }, []);
-
+  };
   // Set current image width and height if those values changed (window resized)
   useEffect(() => {
     setRefX(imgX);
@@ -75,6 +73,7 @@ const GameBoard = ({ levelObj }) => {
           draggable="false"
           onMouseMove={mouseMoveHandler}
           onClick={handleAreaClick}
+          onLoad={handleImageLoad}
           ref={refElement}
         />
         {box.isOpen && (
@@ -88,7 +87,7 @@ const GameBoard = ({ levelObj }) => {
       <p className={styles.debug}>
         Image X: {clientX} | Image Y: {clientY}
         <br></br>
-        Image Width: {refX} | Image Height: {refY}
+        Image Width: {imgX} | Image Height: {imgY}
         <br></br>[ Relative % ] X: {percentageX} | Y: {percentageY}
       </p>
     </>
