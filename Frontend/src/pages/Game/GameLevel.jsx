@@ -21,7 +21,6 @@ const GameLevel = (props) => {
         }
         const result = await response.json();
         setLevelObj(result.level);
-        set;
       } catch (err) {
         console.error("Fetch failed", err);
       }
