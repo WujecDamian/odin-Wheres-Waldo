@@ -30,6 +30,28 @@ const GameLevel = (props) => {
       y1: 39.5,
       y2: 42.5,
     },
+    {
+      id: 3,
+      level_id: 2,
+      character_name: "Wizard",
+      img_url:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbV8SaKOF00Fl30C0FcteBnFAzVWa143MXh95mfkJHgFWIjrNykVLEDKQ&s=10",
+      x1: 26.0,
+      x2: 28.5,
+      y1: 33.5,
+      y2: 38.5,
+    },
+    {
+      id: 4,
+      level_id: 2,
+      character_name: "Odlaw",
+      img_url:
+        "https://avatars.fastly.steamstatic.com/66fbbe0f9060ba54bbeecbe4df707de39d6311c7_full.jpg",
+      x1: 10.0,
+      x2: 11.25,
+      y1: 34.3,
+      y2: 39.45,
+    },
   ];
   return (
     <>
