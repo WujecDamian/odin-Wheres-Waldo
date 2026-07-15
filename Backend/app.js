@@ -1,9 +1,10 @@
 import express from "express";
 const app = express();
 
-app.get("/api", (req, res) => {
-  res.send("Hello World!");
-});
+//routers
+import levelRouter from "./Routers/levelsRouter.js";
+
+app.use("/api", levelRouter);
 
 app.listen(3000, () => {
   console.log(`Example app listening on port http://localhost:3000/api`);
