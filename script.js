@@ -4,8 +4,8 @@ async function main() {
   // Create a new user with a post
   const level = await prisma.level.create({
     data: {
-      name: "Alice",
-      difficulty: "alice@prisma.io",
+      name: "Beach",
+      difficulty: "Easy",
       img_url:
         "https://vuss.io/wp-content/uploads/2025/01/Wheres-Waldo-Beach-Super-High-Resolution-scaled.jpg",
       characters: {
