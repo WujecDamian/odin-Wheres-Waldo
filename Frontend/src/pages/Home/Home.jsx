@@ -15,8 +15,6 @@ function Home() {
         }
         const result = await response.json();
 
-        console.log(result);
-
         setLevels(result.allLevels);
       } catch (err) {
         console.error("Fetch failed", err);
@@ -24,7 +22,6 @@ function Home() {
     };
     fetchLevels();
   }, []);
-  console.log(levels);
   return (
     <>
       <section className={styles.levels}>
