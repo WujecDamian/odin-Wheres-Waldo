@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Level {
+  id           Int           @id @default(autoincrement())
+  name         String        @unique
+  difficulty   String
+  img_url      String
+  leaderboards Leaderboard[]
+  characters   Character[]
+}
+
+model Leaderboard {
+  id              Int    @id @default(autoincrement())
+  username        String
+  completion_time Int
+  level           Level  @relation(fields: [levelId], references: [id])
+  levelId         Int
+}
+
+model Character {
+  id             Int    @id @default(autoincrement())
+  character_name String
+  img_url        String
+  level          Level? @relation(fields: [levelId], references: [id])
+  levelId        Int?
+  x1             Float
+  x2             Float
+  y1             Float
+  y2             Float
+}
