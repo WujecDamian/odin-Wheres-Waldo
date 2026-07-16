@@ -27,8 +27,7 @@ const GameLevel = (props) => {
     };
     fetchLevel();
   }, []);
-  /* From params get level info from db and pass it to gameboard as props */
-  console.log(levelObj);
+
   return (
     <>
       <p className={styles.small__screen__notice}>
