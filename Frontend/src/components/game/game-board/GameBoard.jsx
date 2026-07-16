@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import styles from "./GameBoard.module.css";
 import ClickModalList from "./clickModal/ClickModalList";
+import MapMarker from "./marker/MapMarker";
 
 const GameBoard = ({ levelObj }) => {
   const [clientX, setClientX] = useState(0);
@@ -31,8 +32,8 @@ const GameBoard = ({ levelObj }) => {
           id: characterId,
           name: characterName,
           isFound: false,
-          x: (character.x1 + character.x2) / 2,
-          y: (character.y1 + character.y2) / 2,
+          x: Math.round(((character.x1 + character.x2) / 2) * 100) / 100,
+          y: Math.round(((character.y1 + character.y2) / 2) * 100) / 100,
         });
       });
       setMyCharactersArray(tempCharactersArray);
@@ -132,7 +133,19 @@ const GameBoard = ({ levelObj }) => {
               ></ClickModalList>,
               document.body,
             )}
-          {myCharactersArray}
+          {myCharactersArray.map((character) => {
+            if (character.isFound === true) {
+              console.log("myCharactersArray map");
+              return (
+                <MapMarker
+                  x={character.x}
+                  imgX={imgX}
+                  y={character.y}
+                  imgY={imgY}
+                ></MapMarker>
+              );
+            }
+          })}
         </section>
       </section>
 
