@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import styles from "./GameBoard.module.css";
 import ClickModalList from "./clickModal/ClickModalList";
 
@@ -53,10 +54,14 @@ const GameBoard = ({ levelObj }) => {
 
   // Modal / Box on click containing list of characters to pick from
   const handleAreaClick = (e) => {
+    console.log(clientX, clientY); //it's where user clicked on image
+
+    const modalX = e.pageX;
+    const modalY = e.pageY;
     setBox({
       isOpen: true,
-      x: clientX,
-      y: clientY,
+      x: modalX,
+      y: modalY,
     });
   };
   const closeBox = (e) => {
@@ -65,25 +70,30 @@ const GameBoard = ({ levelObj }) => {
   };
   return (
     <>
-      <section className={styles.game__board}>
-        <img
-          src={levelObj.img_url}
-          alt=""
-          className={styles.board__image}
-          draggable="false"
-          onMouseMove={mouseMoveHandler}
-          onClick={handleAreaClick}
-          onLoad={handleImageLoad}
-          ref={refElement}
-        />
-        {box.isOpen && (
-          <ClickModalList
-            box={box}
-            closeBox={closeBox}
-            characterList={levelObj.characters}
-          ></ClickModalList>
-        )}
+      <section className={styles.game__board__wrapper}>
+        <section className={styles.game__board}>
+          <img
+            src={levelObj.img_url}
+            alt=""
+            className={styles.board__image}
+            draggable="false"
+            onMouseMove={mouseMoveHandler}
+            onClick={handleAreaClick}
+            onLoad={handleImageLoad}
+            ref={refElement}
+          />
+          {box.isOpen &&
+            createPortal(
+              <ClickModalList
+                box={box}
+                closeBox={closeBox}
+                characterList={levelObj.characters}
+              ></ClickModalList>,
+              document.body,
+            )}
+        </section>
       </section>
+
       <p className={styles.debug}>
         Image X: {clientX} | Image Y: {clientY}
         <br></br>
