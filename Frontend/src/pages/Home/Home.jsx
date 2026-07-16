@@ -8,7 +8,9 @@ function Home() {
   useEffect(() => {
     const fetchLevels = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/getAllLevels");
+        const response = await fetch(
+          "http://localhost:3000/api/level/getAllLevels",
+        );
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

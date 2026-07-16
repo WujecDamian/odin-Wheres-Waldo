@@ -13,7 +13,7 @@ const GameLevel = (props) => {
     const fetchLevel = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/getLevel/${gameLevel}`,
+          `http://localhost:3000/api/level/getLevel/${gameLevel}`,
         );
 
         if (!response.ok) {
