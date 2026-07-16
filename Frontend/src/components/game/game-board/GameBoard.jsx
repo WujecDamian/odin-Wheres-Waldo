@@ -65,7 +65,6 @@ const GameBoard = ({ levelObj }) => {
     });
   };
   const closeBox = (e) => {
-    event.stopPropagation();
     setBox({ isOpen: false, x: 0, y: 0 });
   };
   return (
@@ -88,6 +87,8 @@ const GameBoard = ({ levelObj }) => {
                 box={box}
                 closeBox={closeBox}
                 characterList={levelObj.characters}
+                percentageX={percentageX}
+                percentageY={percentageY}
               ></ClickModalList>,
               document.body,
             )}

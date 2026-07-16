@@ -1,7 +1,13 @@
 import Character from "./Character";
 import styles from "./ClickModalList.module.css";
 
-const ClickModalList = ({ box, closeBox, characterList }) => {
+const ClickModalList = ({
+  box,
+  closeBox,
+  characterList,
+  percentageX,
+  percentageY,
+}) => {
   return (
     <section
       className={styles.modal__list}
@@ -14,7 +20,12 @@ const ClickModalList = ({ box, closeBox, characterList }) => {
       <button onClick={closeBox}>X</button>
       <ul>
         {characterList.map((character) => (
-          <Character character={character} closeBox={closeBox}></Character>
+          <Character
+            character={character}
+            closeBox={closeBox}
+            percentageX={percentageX}
+            percentageY={percentageY}
+          ></Character>
         ))}
       </ul>
     </section>
