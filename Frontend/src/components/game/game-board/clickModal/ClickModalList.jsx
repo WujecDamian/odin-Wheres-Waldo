@@ -6,6 +6,7 @@ const ClickModalList = ({ box, closeBox, characterList }) => {
     <section
       className={styles.modal__list}
       style={{
+        position: "absolute",
         left: `${box.x + 10}px`, // 10px offset so the cursor doesn't block the box
         top: `${box.y + 10}px`,
       }}
