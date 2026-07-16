@@ -54,8 +54,6 @@ const GameBoard = ({ levelObj }) => {
 
   // Modal / Box on click containing list of characters to pick from
   const handleAreaClick = (e) => {
-    console.log(clientX, clientY); //it's where user clicked on image
-
     const modalX = e.pageX;
     const modalY = e.pageY;
     setBox({

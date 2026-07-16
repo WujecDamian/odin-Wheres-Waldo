@@ -15,7 +15,6 @@ const Character = ({ character, closeBox, percentageX, percentageY }) => {
   }, [isCorrect]);
   const handleCharacterClick = async (e) => {
     //logic to send POST request to backend to check if the user is correct
-    console.log(percentageX, percentageY);
 
     const bodyData = {
       percentageX,
@@ -44,7 +43,7 @@ const Character = ({ character, closeBox, percentageX, percentageY }) => {
       setError(error.message || error);
     } finally {
     }
-    /*  closeBox(); */
+    closeBox();
   };
   return (
     <li

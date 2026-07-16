@@ -6,7 +6,6 @@ const getAllLevels = async (req, res) => {
 };
 const getLevel = async (req, res) => {
   const levelId = req.params["gameLevel"];
-  console.log(levelId);
   const level = await prisma.level.findUnique({
     where: { id: Number(levelId) },
     include: {
