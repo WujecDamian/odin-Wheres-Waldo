@@ -15,6 +15,45 @@ const GameBoard = ({ levelObj }) => {
   const [percentageY, setPercentageY] = useState(0);
   const [box, setBox] = useState({ isOpen: false, x: 0, y: 0 });
 
+  // Creating characters array with isFound property for game logic.
+  const [myCharactersArray, setMyCharactersArray] = useState([]);
+  useEffect(() => {
+    if (!levelObj) {
+      return;
+    }
+    const createMyCharactersArray = async () => {
+      console.log(levelObj);
+      const tempCharactersArray = [];
+      levelObj.characters.map((character) => {
+        const characterId = character.id;
+        const characterName = character.character_name;
+        tempCharactersArray.push({
+          id: characterId,
+          name: characterName,
+          isFound: false,
+          x: (character.x1 + character.x2) / 2,
+          y: (character.y1 + character.y2) / 2,
+        });
+      });
+      setMyCharactersArray(tempCharactersArray);
+    };
+    createMyCharactersArray();
+  }, [levelObj]);
+  console.log(myCharactersArray);
+  const setCharacterAsFound = (characterId) => {
+    const newMyCharactersArray = myCharactersArray.map((character) => {
+      if (character.id != characterId) {
+        return character;
+      } else {
+        return {
+          ...character,
+          isFound: true,
+        };
+      }
+    });
+    setMyCharactersArray(newMyCharactersArray);
+  };
+
   // Get Image width and height
   const handleImageLoad = () => {
     const width = refElement.current.offsetWidth;
@@ -22,11 +61,13 @@ const GameBoard = ({ levelObj }) => {
     setImgX(width);
     setImgY(height);
   };
+
   // Set current image width and height if those values changed (window resized)
   useEffect(() => {
     setRefX(imgX);
     setRefY(imgY);
   }, [imgX, imgY]);
+
   //get actual img width and height (updates when page is resized)
   const handleResize = (e) => {
     window.addEventListener("resize", () => {
@@ -87,9 +128,11 @@ const GameBoard = ({ levelObj }) => {
                 characterList={levelObj.characters}
                 percentageX={percentageX}
                 percentageY={percentageY}
+                setCharacterAsFound={setCharacterAsFound}
               ></ClickModalList>,
               document.body,
             )}
+          {myCharactersArray}
         </section>
       </section>
 

@@ -2,7 +2,13 @@ import { use, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./ClickModalList.module.css";
 
-const Character = ({ character, closeBox, percentageX, percentageY }) => {
+const Character = ({
+  character,
+  closeBox,
+  percentageX,
+  percentageY,
+  setCharacterAsFound,
+}) => {
   const [error, setError] = useState("");
   const [isCorrect, setIsCorrect] = useState(false);
   const params = useParams();
@@ -43,6 +49,7 @@ const Character = ({ character, closeBox, percentageX, percentageY }) => {
       setError(error.message || error);
     } finally {
     }
+    setCharacterAsFound(character.id);
     closeBox();
   };
   return (

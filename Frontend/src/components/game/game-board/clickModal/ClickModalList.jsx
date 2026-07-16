@@ -7,6 +7,7 @@ const ClickModalList = ({
   characterList,
   percentageX,
   percentageY,
+  setCharacterAsFound,
 }) => {
   return (
     <section
@@ -25,6 +26,7 @@ const ClickModalList = ({
             closeBox={closeBox}
             percentageX={percentageX}
             percentageY={percentageY}
+            setCharacterAsFound={setCharacterAsFound}
           ></Character>
         ))}
       </ul>
