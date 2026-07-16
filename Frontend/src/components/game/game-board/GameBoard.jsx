@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import styles from "./GameBoard.module.css";
 import ClickModalList from "./clickModal/ClickModalList";
 import MapMarker from "./marker/MapMarker";
+import ScoreBoard from "./score-board/ScoreBoard";
 
 const GameBoard = ({ levelObj }) => {
   const [clientX, setClientX] = useState(0);
@@ -109,8 +110,11 @@ const GameBoard = ({ levelObj }) => {
   };
   return (
     <>
+      <ScoreBoard myCharactersArray={myCharactersArray}></ScoreBoard>
+
       <section className={styles.game__board__wrapper}>
         <section className={styles.game__board}>
+          {/* scoreboard here */}
           <img
             src={levelObj.img_url}
             alt=""
