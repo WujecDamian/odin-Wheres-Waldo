@@ -20,4 +20,27 @@ const checkAnswer = async (req, res) => {
   }
 };
 
-export { checkAnswer };
+const deleteScore = async (req, res) => {
+  const levelId = req.params["gameLevel"];
+  const { id } = req.body;
+  await prisma.leaderboard.delete({
+    where: { id: Number(req.body.id), levelId: Number(levelId) },
+  });
+
+  res.json({ message: "Successfully deleted record" });
+};
+const addScore = async (req, res) => {
+  const levelId = req.params["gameLevel"];
+  const { username, completion_time } = req.body;
+  const newScore = await prisma.leaderboard.create({
+    data: {
+      completion_time: Number(completion_time),
+      levelId: Number(levelId),
+      username: username,
+    },
+  });
+
+  res.json({ message: "Successfully added record", newScore });
+};
+
+export { checkAnswer, deleteScore, addScore };
