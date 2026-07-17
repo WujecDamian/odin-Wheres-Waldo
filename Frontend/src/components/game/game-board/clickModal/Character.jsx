@@ -1,5 +1,5 @@
 import { use, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { data, useParams } from "react-router-dom";
 import styles from "./ClickModalList.module.css";
 
 const Character = ({
@@ -44,12 +44,15 @@ const Character = ({
       }
 
       const data = await response.json();
+      if (data.isCorrect) {
+        setCharacterAsFound(character.id);
+      }
       setIsCorrect(data.isCorrect);
     } catch (error) {
       setError(error.message || error);
     } finally {
     }
-    setCharacterAsFound(character.id);
+
     closeBox();
   };
   return (
