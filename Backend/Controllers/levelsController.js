@@ -14,5 +14,12 @@ const getLevel = async (req, res) => {
   });
   res.json({ level });
 };
+const getLevelLeaderboard = async (req, res) => {
+  const levelId = req.params["gameLevel"];
+  const leaderboard = await prisma.leaderboard.findMany({
+    where: { levelId: Number(levelId) },
+  });
+  res.json({ leaderboard });
+};
 
-export { getAllLevels, getLevel };
+export { getAllLevels, getLevel, getLevelLeaderboard };

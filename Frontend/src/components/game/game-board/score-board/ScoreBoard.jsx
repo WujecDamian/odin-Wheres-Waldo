@@ -1,12 +1,35 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useStopwatch } from "react-timer-hook";
 import styles from "./ScoreBoard.module.css";
 
 const ScoreBoard = ({ myCharactersArray }) => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
-
+  const [leaderboard, setLeaderboard] = useState([]);
+  const params = useParams();
+  const gameLevel = params.gameLevel;
   const { totalSeconds, seconds, minutes, isRunning, start, pause } =
     useStopwatch({ autoStart: true, interval: 200 });
+
+  useEffect(() => {
+    const fetchLeaderboard = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/level/getLevelLeaderboard/${gameLevel}`,
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const result = await response.json();
+        setLeaderboard(result.leaderboard);
+      } catch (err) {
+        console.error("Fetch failed", err);
+      }
+    };
+    fetchLeaderboard();
+  }, []);
+  console.log("Leaderboard", leaderboard);
 
   const handleGameEnd = () => {
     console.log("game ended");

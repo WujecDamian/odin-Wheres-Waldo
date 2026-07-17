@@ -7,5 +7,9 @@ import * as levelsController from "../Controllers/levelsController.js";
 
 router.get("/getAllLevels", levelsController.getAllLevels);
 router.get("/getLevel/:gameLevel", levelsController.getLevel);
+router.get(
+  "/getLevelLeaderboard/:gameLevel",
+  levelsController.getLevelLeaderboard,
+);
 
 export default router;
