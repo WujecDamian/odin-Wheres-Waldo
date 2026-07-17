@@ -29,7 +29,6 @@ const ScoreBoard = ({ myCharactersArray }) => {
     };
     fetchLeaderboard();
   }, []);
-  console.log("Leaderboard", leaderboard);
 
   const handleGameEnd = () => {
     console.log("game ended");

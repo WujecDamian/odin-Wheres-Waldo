@@ -18,6 +18,9 @@ const getLevelLeaderboard = async (req, res) => {
   const levelId = req.params["gameLevel"];
   const leaderboard = await prisma.leaderboard.findMany({
     where: { levelId: Number(levelId) },
+    orderBy: {
+      completion_time: "asc",
+    },
   });
   res.json({ leaderboard });
 };

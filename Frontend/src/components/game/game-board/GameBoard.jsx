@@ -4,6 +4,7 @@ import styles from "./GameBoard.module.css";
 import ClickModalList from "./clickModal/ClickModalList";
 import MapMarker from "./marker/MapMarker";
 import ScoreBoard from "./score-board/ScoreBoard";
+import Leaderboard from "./leader-board/LeaderBoard";
 
 const GameBoard = ({ levelObj }) => {
   const [clientX, setClientX] = useState(0);
@@ -159,6 +160,7 @@ const GameBoard = ({ levelObj }) => {
         Image Width: {imgX} | Image Height: {imgY}
         <br></br>[ Relative % ] X: {percentageX} | Y: {percentageY}
       </p>
+      <Leaderboard></Leaderboard>
     </>
   );
 };
