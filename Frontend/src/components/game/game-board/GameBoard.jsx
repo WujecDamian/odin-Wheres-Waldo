@@ -83,18 +83,20 @@ const GameBoard = ({ levelObj }) => {
 
   // Getting X, Y where mouse is and % values also
   const mouseMoveHandler = (e) => {
-    // .getBoundingClientRect() helps track coordinates relative to the board itself
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    if (!box.isOpen) {
+      // .getBoundingClientRect() helps track coordinates relative to the board itself
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-    setClientX(Math.round(x));
-    setClientY(Math.round(y));
+      setClientX(Math.round(x));
+      setClientY(Math.round(y));
 
-    const clientRefX = Math.round((x / refX) * 100 * 100) / 100;
-    const clientRefY = Math.round((y / refY) * 100 * 100) / 100;
-    setPercentageX(clientRefX);
-    setPercentageY(clientRefY);
+      const clientRefX = Math.round((x / refX) * 100 * 100) / 100;
+      const clientRefY = Math.round((y / refY) * 100 * 100) / 100;
+      setPercentageX(clientRefX);
+      setPercentageY(clientRefY);
+    }
   };
 
   // Modal / Box on click containing list of characters to pick from
