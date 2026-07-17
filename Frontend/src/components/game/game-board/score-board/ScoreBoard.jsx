@@ -29,10 +29,66 @@ const ScoreBoard = ({ myCharactersArray }) => {
     };
     fetchLeaderboard();
   }, []);
-
-  const handleGameEnd = () => {
+  const handleGameEnd = async () => {
     console.log("game ended");
     pause();
+    //     ! prompt user for name & wait for it !
+    const username = "test";
+    if (
+      leaderboard.length < 10 ||
+      totalSeconds < leaderboard[10].completion_time
+    ) {
+      const ScoreData = {
+        username,
+        completion_time: totalSeconds,
+      };
+      if (leaderboard.length >= 10) {
+        //delete 10th record
+        const tenthRecordId = leaderboard[10].id;
+        const data = {
+          scoreId: tenthRecordId,
+        };
+        try {
+          const response = await fetch(
+            `http://localhost:3000/api/logic/leaderboard/level/${gameLevel}`,
+            {
+              method: "DELETE",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(data),
+            },
+          );
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          const result = await response.json();
+        } catch (err) {
+          console.error("Fetch failed", err);
+        }
+      }
+      console.log("new record");
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/logic/leaderboard/level/${gameLevel}`,
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(ScoreData),
+          },
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const result = await response.json();
+      } catch (err) {
+        console.error("Fetch failed", err);
+      }
+    }
   };
 
   useEffect(() => {
