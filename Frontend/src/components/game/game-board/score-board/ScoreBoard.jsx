@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useStopwatch } from "react-timer-hook";
 import styles from "./ScoreBoard.module.css";
 
-const ScoreBoard = ({ myCharactersArray }) => {
+const ScoreBoard = ({ myCharactersArray, onRecordAdded }) => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [leaderboard, setLeaderboard] = useState([]);
   const params = useParams();
@@ -89,6 +89,8 @@ const ScoreBoard = ({ myCharactersArray }) => {
         console.error("Fetch failed", err);
       }
     }
+    //function call to tell Leaderboard component to refetch
+    onRecordAdded();
   };
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import styles from "./LeaderBoard.module.css";
 
-const Leaderboard = () => {
+const Leaderboard = ({ refreshTrigger }) => {
   const [leaderboard, setLeaderboard] = useState([]);
   const params = useParams();
   const gameLevel = params.gameLevel;
@@ -25,7 +25,7 @@ const Leaderboard = () => {
       }
     };
     fetchLeaderboard();
-  }, []);
+  }, [refreshTrigger]);
   console.log("Leaderboard", leaderboard);
 
   function fmtMSS(s) {

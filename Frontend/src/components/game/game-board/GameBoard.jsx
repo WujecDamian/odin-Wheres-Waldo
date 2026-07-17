@@ -17,6 +17,7 @@ const GameBoard = ({ levelObj }) => {
   const [percentageX, setPercentageX] = useState(0);
   const [percentageY, setPercentageY] = useState(0);
   const [box, setBox] = useState({ isOpen: false, x: 0, y: 0 });
+  const [refreshKey, setRefreshKey] = useState(0);
 
   // Creating characters array with isFound property for game logic.
   const [myCharactersArray, setMyCharactersArray] = useState([]);
@@ -106,12 +107,18 @@ const GameBoard = ({ levelObj }) => {
       y: modalY,
     });
   };
+  //closes modal list box
   const closeBox = (e) => {
     setBox({ isOpen: false, x: 0, y: 0 });
   };
+  //function to trigger refresh of leaderboard
+  const triggerRefresh = () => setRefreshKey((prev) => prev + 1);
   return (
     <>
-      <ScoreBoard myCharactersArray={myCharactersArray}></ScoreBoard>
+      <ScoreBoard
+        myCharactersArray={myCharactersArray}
+        onRecordAdded={triggerRefresh}
+      ></ScoreBoard>
 
       <section className={styles.game__board__wrapper}>
         <section className={styles.game__board}>
@@ -160,7 +167,7 @@ const GameBoard = ({ levelObj }) => {
         Image Width: {imgX} | Image Height: {imgY}
         <br></br>[ Relative % ] X: {percentageX} | Y: {percentageY}
       </p>
-      <Leaderboard></Leaderboard>
+      <Leaderboard refreshTrigger={refreshKey}></Leaderboard>
     </>
   );
 };
