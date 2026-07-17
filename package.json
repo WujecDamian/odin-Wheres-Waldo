@@ -18,7 +18,8 @@
     "pg": "^8.22.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-router-dom": "^7.18.1"
+    "react-router-dom": "^7.18.1",
+    "react-timer-hook": "^4.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^8.57.0",
