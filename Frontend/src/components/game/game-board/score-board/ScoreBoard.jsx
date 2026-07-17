@@ -30,10 +30,11 @@ const ScoreBoard = ({ myCharactersArray, onRecordAdded }) => {
     fetchLeaderboard();
   }, []);
   const handleGameEnd = async () => {
-    console.log("game ended");
     pause();
     //     ! prompt user for name & wait for it !
-    const username = "test";
+    const username = await prompt(
+      "Congrats! You’ve secured a spot on the leaderboard! 🎉 What name would you like us to display?!",
+    );
     if (
       leaderboard.length < 10 ||
       totalSeconds < leaderboard[10].completion_time
@@ -68,7 +69,6 @@ const ScoreBoard = ({ myCharactersArray, onRecordAdded }) => {
           console.error("Fetch failed", err);
         }
       }
-      console.log("new record");
       try {
         const response = await fetch(
           `http://localhost:3000/api/logic/leaderboard/level/${gameLevel}`,
@@ -105,8 +105,7 @@ const ScoreBoard = ({ myCharactersArray, onRecordAdded }) => {
         }
       });
       setCorrectAnswers(correctCount);
-      console.log(correctCount);
-      console.log(myCharactersArray.length);
+
       if (correctCount === myCharactersArray.length) {
         handleGameEnd();
       }
