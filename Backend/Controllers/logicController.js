@@ -22,9 +22,9 @@ const checkAnswer = async (req, res) => {
 
 const deleteScore = async (req, res) => {
   const levelId = req.params["gameLevel"];
-  const { id } = req.body;
+  const { scoreId } = req.body;
   await prisma.leaderboard.delete({
-    where: { id: Number(req.body.id), levelId: Number(levelId) },
+    where: { id: Number(scoreId), levelId: Number(levelId) },
   });
 
   res.json({ message: "Successfully deleted record" });

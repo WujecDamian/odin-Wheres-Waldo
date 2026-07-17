@@ -37,7 +37,7 @@ const ScoreBoard = ({ myCharactersArray, onRecordAdded }) => {
     );
     if (
       leaderboard.length < 10 ||
-      totalSeconds < leaderboard[10].completion_time
+      totalSeconds < leaderboard[9].completion_time
     ) {
       const ScoreData = {
         username,
@@ -45,7 +45,7 @@ const ScoreBoard = ({ myCharactersArray, onRecordAdded }) => {
       };
       if (leaderboard.length >= 10) {
         //delete 10th record
-        const tenthRecordId = leaderboard[10].id;
+        const tenthRecordId = leaderboard[9].id;
         const data = {
           scoreId: tenthRecordId,
         };
