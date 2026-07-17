@@ -6,3 +6,4 @@
 
 ### TODO
 ##### - Add server side timer for security (prevent users from hacking their score)
+##### - Add component replacing native prompt()
