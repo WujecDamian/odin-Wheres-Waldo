@@ -6,4 +6,3 @@
 
 ### TODO
 ##### - Add server side timer for security (prevent users from hacking their score)
-##### - fix clicking breaking sometimes (e.g. user must click higher than character really is)
