@@ -26,7 +26,6 @@ const Leaderboard = ({ refreshTrigger }) => {
     };
     fetchLeaderboard();
   }, [refreshTrigger]);
-  console.log("Leaderboard", leaderboard);
 
   function fmtMSS(s) {
     return (s - (s %= 60)) / 60 + (9 < s ? ":" : ":0") + s;
@@ -36,17 +35,22 @@ const Leaderboard = ({ refreshTrigger }) => {
     <section className={styles.leaderboard}>
       <h4>Leaderboard</h4>
       <table>
-        <tr>
-          <th>Username</th>
-          <th>Time</th>
-        </tr>
-
-        {leaderboard.map((user) => (
+        <thead>
           <tr>
-            <td className={styles.row__username}>{user.username}</td>
-            <td className={styles.row__time}>{fmtMSS(user.completion_time)}</td>
+            <th>Username</th>
+            <th>Time</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {leaderboard.map((user) => (
+            <tr>
+              <td className={styles.row__username}>{user.username}</td>
+              <td className={styles.row__time}>
+                {fmtMSS(user.completion_time)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </section>
   );
