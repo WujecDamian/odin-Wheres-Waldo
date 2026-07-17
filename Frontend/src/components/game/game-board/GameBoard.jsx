@@ -26,7 +26,6 @@ const GameBoard = ({ levelObj }) => {
       return;
     }
     const createMyCharactersArray = async () => {
-      console.log(levelObj);
       const tempCharactersArray = [];
       levelObj.characters.map((character) => {
         const characterId = character.id;
@@ -43,7 +42,6 @@ const GameBoard = ({ levelObj }) => {
     };
     createMyCharactersArray();
   }, [levelObj]);
-  console.log(myCharactersArray);
   const setCharacterAsFound = (characterId) => {
     const newMyCharactersArray = myCharactersArray.map((character) => {
       if (character.id != characterId) {
@@ -149,7 +147,6 @@ const GameBoard = ({ levelObj }) => {
             )}
           {myCharactersArray.map((character) => {
             if (character.isFound === true) {
-              console.log("myCharactersArray map");
               return (
                 <MapMarker
                   x={character.x}

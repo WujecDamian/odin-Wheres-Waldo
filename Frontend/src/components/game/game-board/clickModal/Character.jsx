@@ -21,7 +21,6 @@ const Character = ({
   }, [isCorrect]);
   const handleCharacterClick = async (e) => {
     //logic to send POST request to backend to check if the user is correct
-
     const bodyData = {
       percentageX,
       percentageY,
